@@ -1,0 +1,118 @@
+<!-- ======= Floating Call Popup (Isolated) ======= -->
+<div class="cp-call-popup" id="cpCallPopup">
+  <button class="cp-close-btn" id="cpCloseBtn">✕</button>
+  <div class="cp-popup-content">
+    <p>📞 Worried About Your Order?<br><span>Talk to an Expert Now!</span></p>
+    <a href="tel:+917000355922" class="cp-call-now-btn">Call: 7000355922</a>
+  </div>
+</div>
+
+<!-- ======= CSS ======= -->
+<style>
+/* ======= Floating Call Popup ======= */
+.cp-call-popup {
+  position: fixed;
+  top: 50%;
+  right: -350px; /* hidden initially */
+  transform: translateY(-50%);
+  background: #fff;
+  border-radius: 12px 0 0 12px;
+  box-shadow: 0 6px 25px rgba(0,0,0,0.15);
+  width: 280px;
+  padding: 15px 15px 20px;
+  z-index: 999999;
+  font-family: 'Poppins', sans-serif;
+  transition: right 0.5s ease;
+  border-left: 5px solid #25D366;
+}
+
+/* When visible */
+.cp-call-popup.cp-show {
+  right: 0;
+}
+
+/* Popup Content */
+.cp-popup-content {
+  text-align: left;
+}
+.cp-popup-content p {
+  font-size: 15px;
+  color: #333;
+  margin: 0 0 10px;
+  font-weight: 600;
+}
+.cp-popup-content span {
+  font-size: 13px;
+  color: #777;
+}
+
+/* Call Button */
+.cp-call-now-btn {
+  display: inline-block;
+  background: #25D366;
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: 0.3s;
+  text-align: center;
+}
+.cp-call-now-btn:hover {
+  background: #1eb155;
+}
+
+/* Close Button */
+.cp-close-btn {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  color: #333;
+  font-size: 18px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.cp-close-btn:hover {
+  color: #25D366;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .cp-call-popup {
+    width: 85%;
+    right: -100%;
+  }
+  .cp-call-popup.cp-show {
+    right: 0;
+  }
+  .cp-popup-content p {
+    font-size: 14px;
+  }
+}
+</style>
+
+<!-- ======= JavaScript ======= -->
+<script>
+  window.addEventListener("load", () => {
+    const cpPopup = document.getElementById("cpCallPopup");
+    const closeBtn = document.getElementById("cpCloseBtn");
+
+    // Show popup after 1.5 seconds
+    setTimeout(() => {
+      cpPopup.classList.add("cp-show");
+    }, 1500);
+
+    // Auto hide after 10 seconds (optional)
+    setTimeout(() => {
+      cpPopup.classList.remove("cp-show");
+    }, 10000);
+
+    // Close button click
+    closeBtn.addEventListener("click", () => {
+      cpPopup.classList.remove("cp-show");
+    });
+  });
+</script>

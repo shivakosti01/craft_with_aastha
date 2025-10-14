@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Place Your Order</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #fafafa; }
+    .container { max-width: 500px; margin: 60px auto; padding: 30px; background: white; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+    input, textarea, button {
+      width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 6px;
+    }
+    button { background-color: #28a745; color: white; border: none; cursor: pointer; }
+    button:hover { background-color: #218838; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>🛒 Place Your Order</h2>
+    <form action="/order" method="POST">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <input type="text" name="phone" placeholder="Your Phone Number" required>
+      <!-- <input type="address" name="address" placeholder="Your Address" required> -->
+      <input type="text" name="product" placeholder="Product Name" required>
+      <input type="number" name="quantity" placeholder="Quantity" required>
+      <textarea name="message" placeholder="Message or Notes"></textarea>
+      <button type="submit">Submit Order</button>
+    </form>
+  </div>
+</body>
+</html>

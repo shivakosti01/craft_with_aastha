@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Crafting World - Top 10 Crafts</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      background: #f8f9fa;
+      font-family: 'Poppins', sans-serif;
+    }
+    /* Navbar */
+    .navbar {
+      background: #fff;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+    .navbar-brand {
+      font-weight: bold;
+      font-size: 22px;
+      color: #d35400 !important;
+    }
+    .nav-link {
+      color: #333 !important;
+      font-weight: 500;
+    }
+    .nav-link:hover {
+      color: #d35400 !important;
+    }
+    /* Header Banner */
+    .blog-header {
+      background: url("https://images.unsplash.com/photo-1585675100414-25c3dbe4f3c1?auto=format&fit=crop&w=1350&q=80") center/cover no-repeat;
+      color: white;
+      text-align: center;
+      padding: 120px 20px;
+      position: relative;
+    }
+    .blog-header::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.5);
+    }
+    .blog-header h1, .blog-header p {
+      position: relative;
+      z-index: 1;
+    }
+    .blog-header h1 {
+      font-size: 42px;
+      font-weight: bold;
+    }
+    .blog-header p {
+      font-size: 18px;
+    }
+    /* Blog Content */
+    .blog-content {
+      max-width: 1100px;
+      margin: 50px auto;
+      background: #fff;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    .craft-item {
+      margin-bottom: 40px;
+    }
+    .craft-item img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
+      margin-bottom: 15px;
+    }
+    .craft-item h2 {
+      font-size: 22px;
+      margin-top: 10px;
+      font-weight: bold;
+      color: #d35400;
+    }
+    .craft-item p {
+      font-size: 16px;
+      line-height: 1.7;
+      color: #555;
+    }
+    footer {
+      background: #222;
+      color: #ddd;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand" href="/">Crafting World</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="/collections">Collections</a></li>
+          <li class="nav-item"><a class="nav-link" href="/products">Products</a></li>
+          <li class="nav-item"><a class="nav-link active" href="/blog">Blog</a></li>
+          <li class="nav-item"><a class="nav-link" href="/contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Header Banner -->
+  <div class="blog-header">
+    <h1>Top 10 Crafts</h1>
+    <p>Discover the best crafts to try for creativity & fun</p>
+  </div>
+
+  <!-- Blog Content -->
+  <div class="blog-content">
+
+    <div class="craft-item">
+      <img src="https://images.unsplash.com/photo-1589998059171-988d887df646?auto=format&fit=crop&w=1000&q=80" alt="Handmade Cards">
+      <h2>1. Handmade Greeting Cards</h2>
+      <p>Personalized greeting cards with paper, colors & creativity.</p>
+    </div>
+
+    <div class="craft-item">
+      <img src="https://images.unsplash.com/photo-1603808033192-052b5a1f5d5a?auto=format&fit=crop&w=1000&q=80" alt="Mason Jar Candle">
+      <h2>2. Mason Jar Candle Holders</h2>
+      <p>Simple mason jars turned into beautiful home décor pieces.</p>
+    </div>
+
+    <div class="craft-item">
+      <img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?auto=format&fit=crop&w=1000&q=80" alt="Bookmarks">
+      <h2>3. Fabric Scrap Bookmarks</h2>
+      <p>Easy bookmarks using fabric scraps or ribbons.</p>
+    </div>
+
+    <div class="craft-item">
+      <img src="https://images.unsplash.com/photo-1616627970481-ecfb9e31a71a?auto=format&fit=crop&w=1000&q=80" alt="Plant Pots">
+      <h2>4. Painted Plant Pots</h2>
+      <p>Transform dull pots into colorful designs with paints.</p>
+    </div>
+
+    <div class="craft-item">
+      <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=1000&q=80" alt="Beaded Bracelets">
+      <h2>5. Beaded Bracelets</h2>
+      <p>Jewelry-making fun with beads & strings.</p>
+    </div>
+
+    <div class="craft-item">
+      <img src="https://images.unsplash.com/photo-1600180758895-75bdfc2df0d3?auto=format&fit=crop&w=1000&q=80" alt="Paper Flowers">
+      <h2>6. Paper Flowers</h2>
+      <p>Decorative & colorful flowers from paper sheets.</p>
+    </div>
+
+    <div class="craft-item">
+      <img src="https://images.unsplash.com/photo-1616627457971-cfefbdf4b77a?auto=format&fit=crop&w=1000&q=80" alt="Photo Frames">
+      <h2>7. Decorative Photo Frames</h2>
+      <p>Frames decorated with shells, beads, and fabrics.</p>
+    </div>
+
+    <div class="craft-item">
+      <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=1000&q=80" alt="Washi Tape">
+      <h2>8. Washi Tape Notebook Covers</h2>
+      <p>Make notebooks look cool with washi tape designs.</p>
+    </div>
+
+    <div class="craft-item">
+      <img src="https://images.unsplash.com/photo-1599487488170-64d4dd47cebb?auto=format&fit=crop&w=1000&q=80" alt="Wall Art">
+      <h2>9. DIY Wall Art</h2>
+      <p>Paint or sketch to create unique wall decorations.</p>
+    </div>
+
+    <div class="craft-item">
+      <img src="https://images.unsplash.com/photo-1616627660198-6c2a9d04f5ad?auto=format&fit=crop&w=1000&q=80" alt="Bottle Vases">
+      <h2>10. Recycled Bottle Vases</h2>
+      <p>Reused bottles turned into stylish flower vases.</p>
+    </div>
+
+    <div class="text-center mt-4">
+      <a href="/" class="btn btn-primary">🏠 Back to Home</a>
+      <a href="/blog" class="btn btn-outline-secondary">📖 More Blogs</a>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Crafting World | All Rights Reserved</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

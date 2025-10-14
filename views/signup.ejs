@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crafting World - Sign Up</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      background-image: url("/images/login.svg");
+      /* background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%); */
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .signup-card {
+      /* background: #fff; */
+      border-radius: 15px;
+      box-shadow: 0px 8px 20px rgba(0,0,0,0.2);
+      padding: 2rem;
+      width: 100%;
+      max-width: 420px;
+    }
+    .signup-card h2 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      color: #000000;
+      font-weight: bold;
+    }
+    .btn-custom {
+      background: #ff4081;
+      color: #fff;
+      border-radius: 30px;
+      transition: all 0.3s ease;
+    }
+    .btn-custom:hover {
+      background: #e73370;
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="signup-card">
+    <h2>Crafting World Sign Up </h2>
+     
+    <form action="/signup" method="post">
+      <div class="mb-3">
+        <label class="form-label">Username</label>
+        <input type="text" name="username" class="form-control" placeholder="Enter your username" required>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Email</label>
+        <input type="email" name="email" class="form-control" placeholder="Enter your email" required>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Mobile Number</label>
+        <input type="tel" name="mobile" class="form-control" placeholder="Enter 10-digit mobile number" required>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Password</label>
+        <input type="password" name="password" class="form-control" placeholder="Enter your password" required>
+      </div>
+     
+      <button type="submit" value="register account" class="btn btn-custom w-100">Sign Up</button>
+    </form>
+    <p class="text-center mt-3">
+      Already have an account? <a href="/login" class="text-decoration-none" style="color:#ff4081;">Login</a>
+    </p>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
