@@ -466,6 +466,61 @@ hr {
       background: #fff;
       transform: scale(1.05);
     }
+#about {
+  padding: 80px 0;
+}
+
+.about-img img {
+  width: 100%;
+  border-radius: 15px;
+  box-shadow: 0 0 25px rgba(212, 175, 55, 0.3);
+  transition: transform 0.4s ease;
+}
+
+.about-img img:hover {
+  transform: scale(1.03);
+}
+
+.about-content {
+  padding-left: 30px;
+}
+
+.about-content h3 {
+  color: var(--gold);
+  font-family: 'Caveat', cursive;
+  font-size: 2rem;
+  margin-bottom: 15px;
+}
+
+.about-content p {
+  color: #ccc;
+  line-height: 1.7;
+  margin-bottom: 15px;
+}
+
+.btn-gold {
+  background: var(--gold);
+  color: #000;
+  text-decoration: none;
+  padding: 10px 25px;
+  border-radius: 30px;
+  font-weight: 600;
+  transition: 0.3s ease;
+}
+
+.btn-gold:hover {
+  background: #fff;
+  color: #000;
+}
+
+@media (max-width: 768px) {
+  .about-content {
+    padding-left: 0;
+    text-align: center;
+    margin-top: 20px;
+  }
+}
+
   </style>
 </head>
 <body>
@@ -530,20 +585,27 @@ hr {
 
   <!-- About -->
   <section id="about">
-    <div class="container">
-      <div class="row g-5 align-items-center">
-        <div class="col-md-6 about-img">
-          <img src="/images/jasmin-schreiber-JE4iHJE-knI-unsplash.jpg" alt="Craft Studio">
-        </div>
-        <div class="col-md-6 about-content">
-          <h3>Where Creativity Meets Craftsmanship</h3>
-          <p>At The Craft Studio, every product is a reflection of passion and patience. From intricate handmade décor to personalized gifts, we design each creation to bring warmth, beauty, and joy to your space.</p>
-          <p>We believe that art has the power to tell stories — and your story deserves a masterpiece.</p>
-          <a href="/about" class="btn-gold">Explore More</a>
-        </div>
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-md-6 about-img">
+        <img src="/images/jasmin-schreiber-JE4iHJE-knI-unsplash.jpg" alt="Crafting Workspace">
+      </div>
+      <div class="col-md-6 about-content">
+        <h3>About Crafting World</h3>
+        <p>
+          At Crafting World, we believe art is emotion made visible. Our handmade creations are 
+          inspired by love, beauty, and craftsmanship. Each piece reflects dedication, precision, 
+          and the magic of human touch.
+        </p>
+        <p>
+          From personalized gifts to elegant décor, our mission is to bring warmth and creativity 
+          into every home and heart.
+        </p>
+        <a href="#services" class="btn-gold">Explore Our Creations</a>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
   <!-- Services -->
   <section id="services" class="text-center">
