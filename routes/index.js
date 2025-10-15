@@ -66,7 +66,7 @@ router.get("/order", (req, res) => res.render("order"));
 
 router.post("/order", async (req, res) => {
   const { name, email, phone, address, product, quantity, message } = req.body;
-
+  res.render("success", { name });
   try {
     // 1️⃣ Save order to MongoDB
     const newOrder = new orderModel({
