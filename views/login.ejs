@@ -3,62 +3,132 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Crafting World - Sign Up</title>
+  <title>Crafting World - Sign in</title>
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Caveat:wght@700&display=swap" rel="stylesheet">
+
   <style>
+    :root {
+      --gold: #d4af37;
+      --dark: #0f0f0f;
+      --light-bg: #1a1a1a;
+    }
+
     body {
-      /* background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);*/
-      background-image: url("/images/login.svg");
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--dark);
+      font-family: 'Poppins', sans-serif;
       min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
+      color: #fff;
     }
+
     .signup-card {
-      /* background: #fff; */
+      background: var(--light-bg);
       border-radius: 15px;
-      box-shadow: 0px 8px 20px rgba(0,0,0,0.2);
+      box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
       padding: 2rem;
       width: 100%;
       max-width: 420px;
+      position: relative;
     }
+
     .signup-card h2 {
       text-align: center;
       margin-bottom: 1.5rem;
-      color: #000000;
-      font-weight: bold;
+      color: var(--gold);
+      font-family: 'Caveat', cursive;
+      font-size: 2rem;
     }
-    .btn-custom {
-      background: #ff4081;
+
+    .form-label {
+      color: var(--gold);
+      font-weight: 500;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      background: transparent;
+      border: 1px solid var(--gold);
+      border-radius: 8px;
       color: #fff;
-      border-radius: 30px;
-      transition: all 0.3s ease;
+      outline: none;
     }
+
+    .form-control::placeholder {
+      color: #ccc;
+    }
+
+    .btn-custom {
+      background: var(--gold);
+      color: #000;
+      font-weight: 600;
+      border: none;
+      border-radius: 25px;
+      padding: 12px;
+      width: 100%;
+      transition: 0.3s ease;
+    }
+
     .btn-custom:hover {
-      background: #e73370;
-      transform: translateY(-2px);
+      background: #fff;
+      transform: scale(1.05);
     }
-    .error{
-      color: red;
-      justify-content: center;
-      font-weight: 800;
+
+    /* Error popup */
+    .error-popup {
+      position: absolute;
+      top: -70px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--dark);
+      border: 2px solid var(--gold);
+      color: var(--gold);
+      padding: 12px 20px;
+      border-radius: 12px;
+      font-family: 'Caveat', cursive;
+      font-size: 1.1rem;
+      font-weight: 700;
+      box-shadow: 0 0 15px rgba(212,175,55,0.5);
+      text-align: center;
+      animation: slideDown 0.5s ease;
+      z-index: 100;
+    }
+
+    @keyframes slideDown {
+      from { opacity: 0; transform: translate(-50%, -20px); }
+      to { opacity: 1; transform: translate(-50%, 0); }
+    }
+
+    .text-center a {
+      color: var(--gold);
+      text-decoration: none;
+    }
+
+    .text-center a:hover {
+      color: #fff;
+      text-decoration: underline;
     }
   </style>
 </head>
 <body>
 
   <div class="signup-card">
-    <h2>Crafting World Sign Up</h2>
-    <% if(error.length > 0){ %>
-    <p class="error"><%= error %></p>
-<% } %>
+    <h2>Crafting World Sign in</h2>
+
+    <!-- Error message popup (only if error exists) -->
+    <% if(error && error.length > 0){ %>
+      <div class="error-popup"><%= error %></div>
+    <% } %>
+
     <form action="/login" method="post">
-      
       <div class="mb-3">
-        <label class="form-label">username</label>
-        <input type="username" name="username" class="form-control" placeholder="Enter your username" required>
+        <label class="form-label">Username</label>
+        <input type="text" name="username" class="form-control" placeholder="Enter your username" required>
       </div>
       
       <div class="mb-3">
@@ -68,8 +138,9 @@
      
       <button type="submit" value="login" class="btn btn-custom w-100">Login</button>
     </form>
+
     <p class="text-center mt-3">
-     I don't have any account <a href="/signup" class="text-decoration-none" style="color:#ff4081;">Signup</a>
+      Don’t have an account? <a href="/signup">Signup</a>
     </p>
   </div>
 
