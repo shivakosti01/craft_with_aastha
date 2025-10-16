@@ -544,30 +544,36 @@ hr {
 
 
 
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg fixed-top">
-    <div class="container">
-      <a class="navbar-brand" href="#">Craft With Astha</a>
-      <button class="navbar-toggler text-light" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse justify-content-end" id="navMenu">
-        <ul class="navbar-nav">
-          <li><a class="nav-link" href="/">Home</a></li>
-          <li><a class="nav-link" href="/about">About</a></li>
-          <li><a class="nav-link" href="/service">Services</a></li>
-          <li><a class="nav-link" href="/gallery">Gallery</a></li>
-          <li><a class="nav-link" href="/review">Reviews</a></li>
-          <li><a class="nav-link" href="/contact">Contact</a></li>
-          <!-- <li><a class="nav-link" href="#" id="loginBtn">Login</a></li>
-          <li><a class="nav-link" href="#" id="signupBtn">Signup</a></li> -->
-          
-        </ul>
-        
-        <button class="login-btn" data-bs-toggle="modal" data-bs-target="#authModal" id="loginBtn"><a href="/login" style="text-decoration: none; color: white;">Login / Signup</a></button>
-      </div>
+   <!-- Navbar -->
+ <nav class="navbar navbar-expand-lg fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="#">Craft With Astha</a>
+    <button class="navbar-toggler text-light" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navMenu">
+      <ul class="navbar-nav">
+        <li><a class="nav-link" href="/">Home</a></li>
+        <li><a class="nav-link" href="/about">About</a></li>
+        <li><a class="nav-link" href="/service">Services</a></li>
+        <li><a class="nav-link" href="/gallery">Gallery</a></li>
+        <li><a class="nav-link" href="/review">Reviews</a></li>
+        <li><a class="nav-link" href="/contact">Contact</a></li>
+      </ul>
+
+      <% if (!currentUser) { %>
+        <button class="login-btn">
+          <a href="/login" style="text-decoration: none; color: white;">Login / Signup</a>
+        </button>
+      <% } else { %>
+        <div class="text-light ms-3">
+          👋 Hi, <%= currentUser.username %>!
+          <a href="/logout" class="btn btn-sm btn-warning ms-2">Logout</a>
+        </div>
+      <% } %>
     </div>
-  </nav>
+  </div>
+</nav>
 
  <!-- Hero -->
 <!-- Hero -->
