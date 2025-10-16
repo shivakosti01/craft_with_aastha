@@ -4,76 +4,140 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Crafting World - Sign Up</title>
-  <!-- Bootstrap CSS -->
+
+  <!-- Fonts and Bootstrap -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Caveat:wght@700&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
   <style>
+    :root {
+      --gold: #d4af37;
+      --dark: #0f0f0f;
+      --light-bg: #1a1a1a;
+    }
+
     body {
-      background-image: url("/images/login.svg");
-      /* background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%); */
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--dark);
+      color: #fff;
+      font-family: 'Poppins', sans-serif;
       min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
     }
+
     .signup-card {
-      /* background: #fff; */
+      background: var(--light-bg);
+      padding: 2.5rem;
       border-radius: 15px;
-      box-shadow: 0px 8px 20px rgba(0,0,0,0.2);
-      padding: 2rem;
+      box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
       width: 100%;
       max-width: 420px;
     }
-    .signup-card h2 {
+
+    h2 {
+      color: var(--gold);
+      font-family: 'Caveat', cursive;
+      font-size: 2.2rem;
       text-align: center;
       margin-bottom: 1.5rem;
-      color: #000000;
-      font-weight: bold;
     }
-    .btn-custom {
-      background: #ff4081;
+
+    label {
+      color: var(--gold);
+      font-weight: 500;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      background: transparent;
+      border: 1px solid var(--gold);
+      border-radius: 8px;
       color: #fff;
-      border-radius: 30px;
-      transition: all 0.3s ease;
+      outline: none;
     }
+
+    input::placeholder {
+      color: #ccc;
+    }
+
+    .btn-custom {
+      background: var(--gold);
+      color: #000;
+      font-weight: 600;
+      border: none;
+      border-radius: 25px;
+      padding: 12px;
+      width: 100%;
+      transition: 0.3s ease;
+    }
+
     .btn-custom:hover {
-      background: #e73370;
-      transform: translateY(-2px);
+      background: #fff;
+      transform: scale(1.05);
+    }
+
+    .error {
+      color: #ff5555;
+      text-align: center;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .login-link {
+      text-align: center;
+      margin-top: 1rem;
+      color: var(--gold);
+      text-decoration: none;
+      display: block;
+      transition: 0.3s ease;
+    }
+
+    .login-link:hover {
+      color: #fff;
+      text-decoration: underline;
     }
   </style>
 </head>
+
 <body>
 
   <div class="signup-card">
-    <h2>Crafting World Sign Up </h2>
-     
+    <h2>✨ Crafting World Sign Up ✨</h2>
+
+    <% if (error && error.length > 0) { %>
+      <p class="error"><%= error %></p>
+    <% } %>
+
     <form action="/signup" method="post">
       <div class="mb-3">
-        <label class="form-label">Username</label>
-        <input type="text" name="username" class="form-control" placeholder="Enter your username" required>
+        <label>Username</label>
+        <input type="text" name="username" placeholder="Enter your username" required>
       </div>
+
       <div class="mb-3">
-        <label class="form-label">Email</label>
-        <input type="email" name="email" class="form-control" placeholder="Enter your email" required>
+        <label>Email</label>
+        <input type="email" name="email" placeholder="Enter your email" required>
       </div>
+
       <div class="mb-3">
-        <label class="form-label">Mobile Number</label>
-        <input type="tel" name="mobile" class="form-control" placeholder="Enter 10-digit mobile number" required>
+        <label>Mobile Number</label>
+        <input type="tel" name="mobile" placeholder="Enter 10-digit mobile number" pattern="[0-9]{10}" required>
       </div>
+
       <div class="mb-3">
-        <label class="form-label">Password</label>
-        <input type="password" name="password" class="form-control" placeholder="Enter your password" required>
+        <label>Password</label>
+        <input type="password" name="password" placeholder="Enter your password" minlength="6" required>
       </div>
-     
-      <button type="submit" value="register account" class="btn btn-custom w-100">Sign Up</button>
+
+      <button type="submit" class="btn-custom">Sign Up</button>
     </form>
-    <p class="text-center mt-3">
-      Already have an account? <a href="/login" class="text-decoration-none" style="color:#ff4081;">Login</a>
-    </p>
+
+    <a href="/login" class="login-link">Already have an account? Login →</a>
   </div>
 
-  <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
