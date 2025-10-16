@@ -16,9 +16,6 @@ var usersRouter = require("./routes/users");
 
 const userModel = require("./routes/users");
 
-
-
-
 // Express App
 var app = express();
 
@@ -36,10 +33,6 @@ mongoose
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
-passport.use(userModel.createStrategy());
-passport.serializeUser(userModel.serializeUser());
-passport.deserializeUser(userModel.deserializeUser());
-
 // ------------------------------
 // ⚙️ Middleware
 // ------------------------------
@@ -49,8 +42,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(flash());
 
+// ------------------------------
+// ⚙️ Session + Passport + Flash
+// ------------------------------
 app.use(
   session({
     secret: process.env.SESSION_SECRET || "default_secret",
@@ -58,9 +53,22 @@ app.use(
     saveUninitialized: false,
   })
 );
-
+app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
+
+// Passport Local Strategy
+passport.use(userModel.createStrategy());
+passport.serializeUser(userModel.serializeUser());
+passport.deserializeUser(userModel.deserializeUser());
+
+// ✅ Make current user available in all EJS views
+app.use((req, res, next) => {
+  res.locals.currentUser = req.user || null;
+  res.locals.success = req.flash("success");
+  res.locals.error = req.flash("error");
+  next();
+});
 
 // ------------------------------
 // 🌐 Routes
@@ -82,5 +90,4 @@ app.use(function (err, req, res, next) {
   res.render("error");
 });
 
-// ------------------------------
 module.exports = app;
