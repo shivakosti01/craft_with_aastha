@@ -24,15 +24,28 @@ router.get("/sucess", (req, res) => res.render("sucess"));
 router.get("/blog1_card", (req, res) => res.render("blog1_card"));
 
 // -------------------- AUTH --------------------
-router.get("/signup", (req, res) => res.render("signup"));
-router.post("/signup", (req, res) => {
+router.get("/signup", (req, res) => {
+  res.render("signup", { error: "" });
+});
+
+router.post("/signup", async (req, res) => {
   const { username, email, password, mobile } = req.body;
-  const userData = new userModel({ username, email, mobile });
-  userModel.register(userData, password).then(function () {
+  try {
+    const userData = new userModel({ username, email, mobile });
+    await userModel.register(userData, password);
+
     passport.authenticate("local")(req, res, function () {
+      req.flash("success", "Welcome! Signup successful.");
       res.redirect("/");
     });
-  });
+  } catch (err) {
+    console.error("Signup error:", err);
+    let message = "Something went wrong, please try again.";
+    if (err.name === "UserExistsError") {
+      message = "Username already exists!";
+    }
+    res.render("signup", { error: message });
+  }
 });
 
 router.get("/login", (req, res) =>
@@ -45,56 +58,62 @@ router.post(
     successRedirect: "/",
     failureRedirect: "/login",
     failureFlash: true,
-  }),
-  function (req, res) {}
+  })
 );
 
 router.get("/logout", function (req, res, next) {
   req.logout(function (err) {
     if (err) return next(err);
+    req.flash("success", "Logged out successfully!");
     res.redirect("/");
   });
 });
 
 function isLoggedIn(req, res, next) {
   if (req.isAuthenticated()) return next();
-  res.redirect("/index");
+  req.flash("error", "Please log in first!");
+  res.redirect("/login");
 }
 
 // -------------------- ORDER ROUTES --------------------
-router.get("/order", (req, res) => res.render("order"));
+router.get("/order", isLoggedIn, (req, res) => {
+  res.render("order");
+});
 
-router.post("/order", async (req, res) => {
+router.post("/order", isLoggedIn, async (req, res) => {
   const { name, email, phone, address, product, quantity, message } = req.body;
-  res.render("success", { name });
+
   try {
     // 1️⃣ Save order to MongoDB
     const newOrder = new orderModel({
       name,
       email,
       phone,
+      address,
       product,
       quantity,
       message,
     });
-    await resend.emails.send({
-  from: "Your Name <onboarding@resend.dev>", // keep this or use verified domain
-  to: "shivakoshti121@gmail.com",             // receiver
-  subject: "✅ New Order Received",
-  html: `
-    <h2>New Order Details</h2>
-    <p><strong>Name:</strong> ${name}</p>
-    <p><strong>Email:</strong> ${email}</p>
-    <p><strong>Phone:</strong> ${phone}</p>
-    <p><strong>Product:</strong> ${product}</p>
-    <p><strong>Quantity:</strong> ${quantity}</p>
-    <p><strong>Message:</strong> ${message}</p>
-  `,
-});
+    await newOrder.save();
 
+    // 2️⃣ Send email
+    await resend.emails.send({
+      from: "Craft With Astha <onboarding@resend.dev>",
+      to: "shivakoshti121@gmail.com",
+      subject: "🛍️ New Order Received",
+      html: `
+        <h2>New Order Details</h2>
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Phone:</strong> ${phone}</p>
+        <p><strong>Product:</strong> ${product}</p>
+        <p><strong>Quantity:</strong> ${quantity}</p>
+        <p><strong>Message:</strong> ${message}</p>
+      `,
+    });
 
     console.log("✅ Email sent successfully via Resend");
-    res.render("sucess");
+    res.render("sucess", { name });
   } catch (error) {
     console.error("❌ Order processing error:", error);
     res.status(500).send("Something went wrong, please try again.");
